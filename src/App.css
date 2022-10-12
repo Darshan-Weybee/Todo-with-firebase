@@ -1,0 +1,37 @@
+.App {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.app-body{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.todo-body{
+  width: 60%;
+}
+
+.input-box{
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.add-btn{
+  margin: 0 1rem;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 550;
+  color: white;
+  background-color: #1b75cf;
+}
+
+.ul{
+  width: 50%;
+  margin: auto;
+}

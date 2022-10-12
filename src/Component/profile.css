@@ -1,0 +1,26 @@
+.profile{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);  
+  }
+  
+  .card{
+    display: flex;
+    flex-direction: column;
+    border : 1px solid rgb(210, 210, 210);
+    padding : 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    font-size: 1rem;
+  }
+  
+  .card-img-top{
+    width: 8rem;
+    border-radius: 50%;
+  }
+  
+  .card-title{
+    font-size: 1.1rem;
+    letter-spacing: 0.02rem;
+  }
