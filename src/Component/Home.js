@@ -8,7 +8,7 @@ import Profile from './Profile';
 function Home() {
     const [todos, setTodos] = useState([]);
     const [input, setInput] = useState("");
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
 
     useEffect(() => {
         onSnapshot(collection(db, "Todos"), (snapshot) => {
@@ -27,17 +27,23 @@ function Home() {
         setInput("");
     }
 
+    const RenderTodo = ({todo}) => {
+        if(user.providerData[0].uid === todo.item.uid) 
+            return <Todos arr={todo}/>
+        return null;
+    }
+
     const HomePageDetail = () => {
         return <div className="App">
             <h2>Todo List App</h2>
             <div className='app-body'>
                 <div className='todo-body'>
                     <form>
-                        <input type="text" className='input-box' onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === "Enter") clickHandler(); }} />
+                        <input type="text" className='input-box' onChange={e => setInput(e.target.value)}/>
                         <button className='add-btn' onClick={clickHandler}>Add Todo</button>
                     </form>
                     <ul className='ul'>
-                        {todos.map(todo => {if(user.providerData[0].uid === todo.item.uid) return <Todos key={todo.id} arr={todo} />})}
+                        {todos.map(todo => <RenderTodo key={todo.id} todo={todo}/>)}
                     </ul>
                 </div>
                 <div><Profile user={user}/></div>

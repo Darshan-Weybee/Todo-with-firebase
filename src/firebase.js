@@ -1,10 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
 import {
   GoogleAuthProvider,
   getAuth,
-  signInWithPopup
+  signInWithPopup,
+  browserSessionPersistence,
+  setPersistence
   // signInWithEmailAndPassword,
   // createUserWithEmailAndPassword,
   // sendPasswordResetEmail,
@@ -36,7 +38,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-const analytics = getAnalytics(firebaseApp);
+// const analytics = getAnalytics(firebaseApp);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 
@@ -44,6 +46,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const signInWithGoogle = async () => {
   try{
+    setPersistence(auth, browserSessionPersistence);
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
     
